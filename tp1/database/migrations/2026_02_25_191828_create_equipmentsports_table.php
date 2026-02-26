@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('equipmentsports', function (Blueprint $table) {
             $table->id();
-            $table->foreign('equipment_id')->references('id')->on('equipment');
-            $table->foreign('sport_id')->references('id')->on('sports');
+            $table->foreignId('equipment_id')->references('id')->on('equipment');
+            $table->foreignId('sport_id')->references('id')->on('sports');
             $table->timestamps();
         });
     }
