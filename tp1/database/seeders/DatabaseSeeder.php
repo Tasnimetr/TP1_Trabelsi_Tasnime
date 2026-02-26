@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             EquipmentSportSeeder::class,
         ]);
 
-        Sport::factory(10)->has(Equipment::factory(2)->count(2))->create();
+        Sport::factory(10)->hasAttached(Equipment::factory(2))->create();
         User::factory(10)->has(Rental::factory(3)->has(Review::factory(4)))->create();
     }
 }
