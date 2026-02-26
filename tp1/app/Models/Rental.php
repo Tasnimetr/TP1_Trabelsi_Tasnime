@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rentals extends Model
+class Rental extends Model
 {
     use HasFactory;
 
@@ -14,9 +14,14 @@ class Rentals extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function equipment()
+    {
+        return $this->belongsTo(Equipment::class);
+    }
+
     public function reviews()
     {
-        return $this->hasOne(Reviews::class);
+        return $this->hasOne(Review::class);
     }
 
     protected $fillable = [

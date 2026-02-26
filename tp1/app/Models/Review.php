@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reviews extends Model
+class Review extends Model
 {
     use HasFactory;
 
     public function rental()
     {
-        return $this->belongsTo(Rentals::class);
+        return $this->belongsTo(Rental::class);
     }
 
     public function user()
