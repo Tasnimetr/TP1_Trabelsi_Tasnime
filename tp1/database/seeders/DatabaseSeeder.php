@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Rental;
+use App\Models\Review;
+use App\Models\Sport;
+use App\Models\Equipment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -23,5 +27,8 @@ class DatabaseSeeder extends Seeder
             SportSeeder::class,
             EquipmentSportSeeder::class,
         ]);
+
+        Sport::factory(10)->has(Equipment::factory(2)->count(2))->create();
+        User::factory(10)->has(Rental::factory(3)->has(Review::factory(4)))->create();
     }
 }
