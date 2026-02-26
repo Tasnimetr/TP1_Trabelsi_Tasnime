@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Equipment;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -20,6 +21,7 @@ class RentalFactory extends Factory
             'startDate' => fake()->date(),
             'endDate' => fake()->date(),
             'totalPrice' => fake()->randomFloat(2, 5, 500),
+            'equipment_id' => Equipment::inRandomOrder()->first()->id,
         ];
     }
 }

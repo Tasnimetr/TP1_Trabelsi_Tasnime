@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -19,6 +20,7 @@ class ReviewFactory extends Factory
         return [
             'rating' => fake()->numberBetween(1, 5),
             'comment' => fake()->sentence(),
+            'user_id' => User::inRandomOrder()->first()->id,
         ];
     }
 }
