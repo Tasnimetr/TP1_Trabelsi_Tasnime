@@ -4,23 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Equipment extends Model
 {
+    use HasFactory;
 
     public function category()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function rentals()
     {
-        return $this->hasMany(Rentals::class);
+        return $this->hasMany(Rental::class);
     }
 
     public function sports(): BelongsToMany
     {
-        return $this->belongsToMany(Sports::class, 'equipmentsports');
+        return $this->belongsToMany(Sport::class, 'equipmentsports');
     }
 
     protected $fillable = [
