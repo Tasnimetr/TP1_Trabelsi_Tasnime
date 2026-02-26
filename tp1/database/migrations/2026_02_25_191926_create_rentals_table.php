@@ -16,8 +16,8 @@ return new class extends Migration
             $table->date('startDate');
             $table->date('endDate');
             $table->decimal('totalPrice', 10, 0);
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('equipment_id')->references('id')->on('equipment');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('equipment_id')->references('id')->on('equipment');
             $table->timestamps();
         });
     }

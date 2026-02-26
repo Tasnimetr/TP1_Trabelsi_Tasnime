@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->tinyInteger('rating');
             $table->text('comment');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('rental_id')->references('id')->on('rentals');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('rental_id')->references('id')->on('rentals');
             $table->timestamps();
         });
     }
