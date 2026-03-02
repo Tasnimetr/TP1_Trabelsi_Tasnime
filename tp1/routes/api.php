@@ -16,13 +16,13 @@ Route::get('equipment/{id}', [EquipmentController::class, 'show']);
 Route::get('equipment/{id}/popularity', [EquipmentController::class, 'popularity']);
 
 //4 Créer un utilisateur
-Route::post('user', [UserController::class, 'store']); //ou insert?
+Route::post('users', [UserController::class, 'store']); //ou insert?
 
 //5 Mettre à jour un utilisateur (mise à jour complète et non partielle)
-Route::put('user/{id}', [UserController::class, 'update']);
+Route::put('users/{id}', [UserController::class, 'update']);
 
 //6 Supprimer une critique
-Route::delete('review/{id}', [ReviewController::class, 'destroy']); //ou delete?
+Route::delete('reviews/{id}', [ReviewController::class, 'destroy']); //ou delete?
 
 //7 Recevoir la moyenne du prix total de location d’un équipement 
 Route::get('equipment/{id}/average-price', [EquipmentController::class, 'averagePrice']);
