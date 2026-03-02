@@ -62,7 +62,6 @@ class EquipmentController extends Controller
 
     public function averagePrice(Request $request, $id)
     {
-        //$equipment = Equipment::findOrFail($id);
         $minDate = $request->input('minDate');
         $maxDate = $request->input('maxDate');
 
@@ -76,14 +75,14 @@ class EquipmentController extends Controller
         $location = Rental::where('equipment_id', $id);
 
         if ($minDate) {
-            $location->where('start_Date', '>=', $minDate);
+            $location->where('startDate', '>=', $minDate);
         }
 
         if ($maxDate) {
-            $location->where('start_Date', '<=', $maxDate);
+            $location->where('startDate', '<=', $maxDate);
         }
 
-        $averagePrice = $location->avg('totalPrice');
+        $averagePrice = $location->avg('totalPrice') ?? 0;
         echo('La moyenne du prix total de location de cet équipement est de: ' . $averagePrice);
     }
 } 
