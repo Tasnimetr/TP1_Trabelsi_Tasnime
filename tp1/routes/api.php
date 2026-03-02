@@ -25,4 +25,4 @@ Route::put('users/{id}', [UserController::class, 'update']);
 Route::delete('reviews/{id}', [ReviewController::class, 'destroy']); //ou delete?
 
 //7 Recevoir la moyenne du prix total de location d’un équipement 
-Route::get('equipment/{id}/average-price', [EquipmentController::class, 'averagePrice']);
+Route::get('equipment/{id}/average_price', [EquipmentController::class, 'averagePrice']);

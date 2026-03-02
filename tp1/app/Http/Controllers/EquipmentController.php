@@ -59,4 +59,31 @@ class EquipmentController extends Controller
         $popularityIndex = ($totalNumberLocations * 0.6) + ($averageRating * 0.4);
         echo("L'indice de popularité est de " . $popularityIndex);
     }
+
+    public function averagePrice(Request $request, $id)
+    {
+        //$equipment = Equipment::findOrFail($id);
+        $minDate = $request->input('minDate');
+        $maxDate = $request->input('maxDate');
+
+        if ($minDate && $maxDate) {
+            if ($minDate > $maxDate) {
+            echo("minDate doit être inférieur à maxDate");
+            return;
+        }
+        }
+
+        $location = Rental::where('equipment_id', $id);
+
+        if ($minDate) {
+            $location->where('start_Date', '>=', $minDate);
+        }
+
+        if ($maxDate) {
+            $location->where('start_Date', '<=', $maxDate);
+        }
+
+        $averagePrice = $location->avg('totalPrice');
+        echo('La moyenne du prix total de location de cet équipement est de: ' . $averagePrice);
+    }
 } 
