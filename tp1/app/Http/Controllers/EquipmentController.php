@@ -75,6 +75,26 @@ class EquipmentController extends Controller
         }
     }
 
+    #[OA\Get(
+    path: "/api/equipment/{id}/popularity",
+    summary: "Afficher indice de popularité d'un équipement",
+    tags: ["Equipment"],
+    parameters: [
+    new OA\Parameter(
+    name: "id",
+    description: "Equipment ID",
+    in: "path",
+    required: true,
+    schema: new OA\Schema(type: "integer")
+    )
+    ],
+    responses: [
+    new OA\Response(
+    response: "200", description: "OK"
+    )
+    ]
+    )]
+
     public function popularity($id)
     {
         $equipment = Equipment::findOrFail($id);
@@ -94,6 +114,26 @@ class EquipmentController extends Controller
         $popularityIndex = ($totalNumberLocations * 0.6) + ($averageRating * 0.4);
         echo("L'indice de popularité est de " . $popularityIndex);
     }
+
+    #[OA\Get(
+    path: "/api/equipment/{id}/average_price",
+    summary: "Afficher moyenne du prix total de location d’un équipement ",
+    tags: ["Equipment"],
+    parameters: [
+    new OA\Parameter(
+    name: "id",
+    description: "Equipment ID",
+    in: "path",
+    required: true,
+    schema: new OA\Schema(type: "integer")
+    )
+    ],
+    responses: [
+    new OA\Response(
+    response: "200", description: "OK"
+    )
+    ]
+    )]
 
     public function averagePrice(Request $request, $id)
     {

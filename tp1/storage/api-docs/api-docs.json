@@ -25,7 +25,7 @@
                     "Equipment"
                 ],
                 "summary": "Afficher un équipement",
-                "operationId": "7d9aa9e05e2cf7f727632891229ac904",
+                "operationId": "546d2e88aec2a0d7af708399e7e20a1e",
                 "parameters": [
                     {
                         "name": "id",
@@ -43,6 +43,56 @@
                     },
                     "404": {
                         "description": "Équipement non trouvé"
+                    }
+                }
+            }
+        },
+        "/api/equipment/{id}/popularity": {
+            "get": {
+                "tags": [
+                    "Equipment"
+                ],
+                "summary": "Afficher indice de popularité d'un équipement",
+                "operationId": "f073a07513b9a2e31ca3067c2dccd504",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Equipment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/equipment/{id}/average_price": {
+            "get": {
+                "tags": [
+                    "Equipment"
+                ],
+                "summary": "Afficher moyenne du prix total de location d’un équipement ",
+                "operationId": "85b57683bd81f945f2684e36f91ed5d4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Equipment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
                     }
                 }
             }
