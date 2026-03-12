@@ -9,9 +9,21 @@ use App\Models\Rental;
 use App\Models\Review;
 use Exception;
 use Illuminate\Database\QueryException;
+use OpenApi\Attributes as OA;
 
 class EquipmentController extends Controller
 {
+    #[OA\Get(
+    path: "/api/equipment",
+    summary: "Liste de tous les equipment",
+    tags: ["Equipment"],
+    responses: [
+    new OA\Response(
+    response: "200", description: "OK"
+    )
+    ]
+    )]
+
     public function index()
     {
         try
@@ -23,6 +35,29 @@ class EquipmentController extends Controller
             abort(500, 'Server error');
         }
     }
+
+    #[OA\Get(
+    path: "/api/equipment/{id}",
+    summary: "Afficher un équipement",
+    tags: ["Equipment"],
+    parameters: [
+    new OA\Parameter(
+    name: "id",
+    description: "Equipment ID",
+    in: "path",
+    required: true,
+    schema: new OA\Schema(type: "integer")
+    )
+    ],
+    responses: [
+    new OA\Response(
+    response: "200", description: "OK"
+    ),
+    new OA\Response(
+    response: "404", description: "Équipement non trouvé"
+    )
+    ]
+    )]
 
     public function show($id)
     {
