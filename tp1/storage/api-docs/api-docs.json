@@ -97,6 +97,35 @@
                 }
             }
         },
+        "/api/reviews/{id}": {
+            "delete": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Supprimer une critique",
+                "description": "Supprimer une critique par ID",
+                "operationId": "89986343b5dbd2b909c2764aeb7e4096",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Review ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Review deleted successfully"
+                    },
+                    "404": {
+                        "description": "Review not found"
+                    }
+                }
+            }
+        },
         "/api/users": {
             "post": {
                 "tags": [
@@ -151,12 +180,69 @@
                     }
                 }
             }
+        },
+        "/api/users/{id}": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Mettre à jour un utilisateur",
+                "description": "Mettre à jour données utilisateur",
+                "operationId": "b9091397c8b25f12c6adb74be6ce3a5a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Jane Doe"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "jane@example.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User updated successfully"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
         }
     },
     "tags": [
         {
             "name": "Equipment",
             "description": "Equipment"
+        },
+        {
+            "name": "Reviews",
+            "description": "Reviews"
         },
         {
             "name": "Users",

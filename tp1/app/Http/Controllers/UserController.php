@@ -72,8 +72,7 @@ class UserController extends Controller
         responses: [
             new OA\Response(
                 response: 200,
-                description: "User updated successfully",
-                content: new OA\JsonContent(ref: "#/components/schemas/User")
+                description: "User updated successfully"
             ),
             new OA\Response(
                 response: 404,
@@ -85,7 +84,7 @@ class UserController extends Controller
             )
         ]
     )]
-     public function update(UpdateUserRequest $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $user->update($request->validated());
