@@ -108,8 +108,6 @@ class EquipmentController extends Controller
         echo ("L'indice de popularité est de " . $popularityIndex);
     }
 
-  
-
     #[OA\Get(
         path: "/api/equipment/{id}/average_price",
         summary: "Afficher moyenne du prix total de location d’un équipement",
