@@ -48,8 +48,8 @@ class UserController extends Controller
 
     #[OA\Put(
         path: "/api/users/{id}",
-        summary: "Update an existing user",
-        description: "Updates user data",
+        summary: "Mettre à jour un utilisateur",
+        description: "Mettre à jour données utilisateur",
         tags: ["Users"],
         parameters: [
             new OA\Parameter(
