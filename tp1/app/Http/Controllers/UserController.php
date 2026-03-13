@@ -89,6 +89,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update($request->validated());
-        return (new UserResource($user))->response()->setStatusCode(201); //update fait -> OK
+        return (new UserResource($user))->response()->setStatusCode(200); //update fait -> OK
     }
 }
