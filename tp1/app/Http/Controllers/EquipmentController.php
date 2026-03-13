@@ -108,9 +108,11 @@ class EquipmentController extends Controller
         echo ("L'indice de popularité est de " . $popularityIndex);
     }
 
+  
+
     #[OA\Get(
         path: "/api/equipment/{id}/average_price",
-        summary: "Afficher moyenne du prix total de location d’un équipement ",
+        summary: "Afficher moyenne du prix total de location d’un équipement",
         tags: ["Equipment"],
         parameters: [
             new OA\Parameter(
@@ -119,12 +121,30 @@ class EquipmentController extends Controller
                 in: "path",
                 required: true,
                 schema: new OA\Schema(type: "integer")
+            ),
+            new OA\Parameter(
+                name: "minDate",
+                description: "Minimum date",
+                in: "query",
+                required: false,
+                schema: new OA\Schema(type: "date", default: "2020-01-01")
+            ),
+            new OA\Parameter(
+                name: "maxDate",
+                description: "Maximum date",
+                in: "query",
+                required: false,
+                schema: new OA\Schema(type: "date", default:"2026-03-01")
             )
         ],
         responses: [
             new OA\Response(
                 response: "200",
                 description: "OK"
+            ),
+            new OA\Response(
+                response: "400",
+                description: "minDate doit être inférieur à maxDate"
             )
         ]
     )]

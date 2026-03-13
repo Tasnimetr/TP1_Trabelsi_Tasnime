@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API",
+        "title": "Documentation du TP1",
         "version": "1.0"
     },
     "paths": {
@@ -77,7 +77,7 @@
                 "tags": [
                     "Equipment"
                 ],
-                "summary": "Afficher moyenne du prix total de location d’un équipement ",
+                "summary": "Afficher moyenne du prix total de location d’un équipement",
                 "operationId": "85b57683bd81f945f2684e36f91ed5d4",
                 "parameters": [
                     {
@@ -88,11 +88,36 @@
                         "schema": {
                             "type": "integer"
                         }
+                    },
+                    {
+                        "name": "minDate",
+                        "in": "query",
+                        "description": "Minimum date",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "default": "2020-01-01"
+                        }
+                    },
+                    {
+                        "name": "maxDate",
+                        "in": "query",
+                        "description": "Maximum date",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "default": "2026-03-01"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK"
+                    },
+                    "400": {
+                        "description": "minDate doit être inférieur à maxDate"
                     }
                 }
             }
